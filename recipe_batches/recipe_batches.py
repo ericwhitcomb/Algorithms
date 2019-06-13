@@ -3,7 +3,27 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  final_count = None
+
+  for k in recipe.keys():
+    if k in ingredients.keys():
+      count = int(ingredients[k] / recipe[k])
+      if count <= 0:
+        return 0
+      elif final_count is None:
+        final_count = count
+      else:
+        if count < final_count:
+          final_count = count
+    else:
+      return 0
+    
+  if final_count is None:
+    return 0
+
+  return final_count
+
+
 
 
 if __name__ == '__main__':
